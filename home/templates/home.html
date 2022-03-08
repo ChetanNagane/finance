@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div class="card-deck">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h5>Cash</h5>
+                <h2 class="card-text">{{ request.user.cash }}</h2>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+            <h5>Invested Amount</h5>
+            <h2 class="card-text">{{ invest_value }}</h2>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+            <h5>Current Amount</h5>
+            <h2 class="card-text">{{ current_value }}</h2>
+            </div>
+        </div>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+            <h5>Total Profit/Loss</h5>
+            <h2 class="card-text" style="color:{% if profit_loss > 0 %} limegreen{% elif profit_loss < 0 %} red {% else %} black {% endif %};">{{ profit_loss }}</h2>
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Avg Buy Price</th>
+                <th>Current Price</th>
+                <th>Invested Value</th>
+                <th>Current Value</th>
+                <th>Profit/Loss</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table %}
+                <tr>
+                    <td>{{ row.symbol }}</td>
+                    <td>{{ row.quantity }}</td>
+                    <td>{{ row.price }}</td>
+                    <td>{{ row.currentPrice }}</td>
+                    <td>{{ row.invested }}</td>
+                    <td>{{ row.current }}</td>
+                    <td style="color:{% if row.profitLoss > 0 %} limegreen{% elif row.profitLoss < 0 %} red {% else %} black {% endif %};">{{ row.profitLoss }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="{% url 'sell' %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
