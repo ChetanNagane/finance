@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#xt4h&!&v%1at^g3wqycb9x4(n7)j=^*(4c^9@wu!)@dct+416'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'finance.wsgi.application'
+WSGI_APPLICATION = 'finance.wsgi.app'
 
 
 # Database
